@@ -22,6 +22,7 @@ cy.visit('https://umbrage.my.salesforce.com/')
 		cy.get('[data-columnid="weekDay3"]')
 			 .find('input') // assuming that the field is an input element
 			 .type('8')
+			 cy.get(".username")
 
 
 		
