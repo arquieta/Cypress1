@@ -20,7 +20,7 @@ describe('Validar operaciones  en la calculadora de google', () => {
 })
 
 it('Validar resta en google', () => {
-	cy.baseURL()
+	cy.visitLiverpool()
 
 
 	cy.get('#mainSearchbar').should('be.visible').type(
