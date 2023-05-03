@@ -5,10 +5,7 @@ describe('Meter Timesheet', () => {
 })
 cy.visit('https://umbrage.my.salesforce.com/')
 
-		cy.get('#username').should('be.visible').type(
-			'diego.arquieta@umbrage.com')
-			cy.get('#password').should('be.visible').type(
-				'Salesforce.1123')
+cy.salesforceLogin('username', 'password')
 		cy.contains('Log In').should('be.visible').click()
 		cy.contains('Remind Me Later').should('be.visible').click()
 		
