@@ -42,6 +42,7 @@ declare namespace Cypress {
 		buttonLogin(): Chainable<Element>
 		sendWhatsappCode(): Chainable<Element>
 		salesforceLogin(username, password): Chainable<Element>
+		zeroLogin(): Chainable<Element>
 	}
 }
 
@@ -86,3 +87,11 @@ Cypress.Commands.add('sendWhatsappCode', () => {
 	cy.get('.cfe4535fe._link-resend-code.c2dd6083e').should('be.visible').click()
 	cy.wait(10000)
 })
+
+
+Cypress.Commands.add('zeroLogin', () => {
+	cy.contains('Signin').should('be.visible').click()
+		cy.get('#user_login').type('username')
+		cy.get('#user_password').type('password')
+		cy.get('input[type="submit"]').click()
+	})
