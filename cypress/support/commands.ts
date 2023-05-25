@@ -78,7 +78,7 @@ Cypress.Commands.add('pageLogin', (username, password) => {
 		})
 })
 Cypress.Commands.add('buttonLogin', () => {
-	cy.get('.ce1523b8d.c85726882.c567db5a5.cb74e5196.cdff2c08e')
+	cy.get('button[type="submit"]').contains('Iniciar sesión').should('be.visible').click({force: true})
 	
 	//.c994ae14c.c2fd8f218.ca2dc35c7.c0c7f649b.cfbf81233
 })
