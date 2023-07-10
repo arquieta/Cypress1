@@ -1,15 +1,25 @@
 describe('Validar operaciones  en la calculadora de google', () => {
+	
+	beforeEach(() =>{
+		
+		cy.visitLiverpool();
+		cy.title().then((title)=> {
+			cy.log(title);
+			expect(title).to.be.equal('Liverpool es parte de Mi vida')
+		})
+		cy.title().should('eq', 'Liverpool es parte de Mi vida')
+		
+	})
+	
 	it.only('Validar suma en google', () => {
-		cy.visitLiverpool()
-
-
+		
 		cy.get('#mainSearchbar').should('be.visible').type(
 			'Pantalla LG OLED Smart TV de 55 pulgadas 4K{enter}')
 
 		cy.contains('Pantalla LG OLED SMART TV de 55 pulgadas 4k/Dolby Atmos OLED55C2PSA con WebOS').should('be.visible').click({force: true})
-		cy.get('.m-product__price-dw-promotion').invoke('text').then((text) => {
+		cy.get('.m-product__price-dw-promotion').should('not.be.empty').invoke('wholeText').then((price) => {
 			// Store the value in a variable or use it as needed
-			const copiedValue = text.trim();
+			const copiedValue = price.trim();
 			// You can also perform additional actions with the copied value
 			// For example, log it to the Cypress command log
 			cy.log(`Copied value: ${copiedValue}`);

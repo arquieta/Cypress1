@@ -1,11 +1,18 @@
-describe('Validar escenario pal Juano', () => {
+describe('Validar escenario pal Juanjo', () => {
 	
 	beforeEach(() =>{
 		
 		cy.visit('http://zero.webappsecurity.com/');
+		cy.title().then((title)=> {
+			cy.log(title);
+			expect(title).to.be.equal('Zero - Personal Banking - Loans - Credit Cards')
+		})
+		cy.title().should('eq', 'Zero - Personal Banking - Loans - Credit Cards')
+		
 	})
 	
 	it.only('Transportation debe pasar a ser no visible', () => {
+		cy.title().should('eq', 'Zero - Personal Banking - Loans - Credit Cards')
 
 		//Aquí hacemos login
 		cy.zeroLogin()
