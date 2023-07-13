@@ -37,61 +37,15 @@ declare namespace Cypress {
 		 * @param address1 - takes first address to use
 		 */
 		visitHomepage(): Chainable<Element>
-		pageLogin(username, password): Chainable<Element>
+		pageLogin(): Chainable<Element>
 		visitLiverpool(): Chainable<Element>
-		buttonLogin(): Chainable<Element>
-		sendWhatsappCode(): Chainable<Element>
-		salesforceLogin(username, password): Chainable<Element>
-		zeroLogin(): Chainable<Element>
 	}
 }
 
-
-
-Cypress.Commands.add('visitLiverpool', () => {
-	cy.viewport(1920, 1080)
-	cy.clearCookies()
-	cy.clearLocalStorage()
-		cy.visit('/', {
-			headers: {
-				'accept': 'application/json, text/plain, */*',
-				'user-agent': 'axios/0.27.2'
-			}
-})
-})
-
-Cypress.Commands.add('pageLogin', (username, password) => {
-	cy.fixture('example').then(example => {
-		const username = example.username
-		const password = example.password
-
-		cy.get('#username').type(username)
-		cy.get('#password').type(password)
-	})
-})
-	Cypress.Commands.add('salesforceLogin', (username, password) => {
-		cy.fixture('salesforce').then(salesforce => {
-			const username = salesforce.username
-			const password = salesforce.password
-	
-			cy.get('#username').type(username)
-			cy.get('#password').type(password)
-		})
-})
-Cypress.Commands.add('buttonLogin', () => {
-	cy.get('button[type="submit"]').contains('Iniciar sesión').should('be.visible').click({force: true})
-	
-	//.c994ae14c.c2fd8f218.ca2dc35c7.c0c7f649b.cfbf81233
-})
-Cypress.Commands.add('sendWhatsappCode', () => {
-	cy.get('.cfe4535fe._link-resend-code.c2dd6083e').should('be.visible').click()
-	cy.wait(10000)
+Cypress.Commands.add('visitHomepage', () => {
+	cy.visit('https://guest:guest-test@qa.parking.com')
 })
 
 
-Cypress.Commands.add('zeroLogin', () => {
-	cy.contains('Signin').should('be.visible').click()
-		cy.get('#user_login').type('username')
-		cy.get('#user_password').type('password')
-		cy.get('input[type="submit"]').click()
-	})
+
+
