@@ -6,8 +6,6 @@ describe('Meter Timesheet', () => {
 cy.visit('https://umbrage.my.salesforce.com/')
 
 cy.salesforceLogin('username', 'password')
-		cy.contains('Log In').should('be.visible').click()
-		cy.contains('Remind Me Later').should('be.visible').click()
 		
 		cy.url().should('include', 'https://umbrage.lightning.force.com/lightning/page/home')
 		cy.contains('Time Entry').should('be.visible').click()

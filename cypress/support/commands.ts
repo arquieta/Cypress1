@@ -76,6 +76,8 @@ Cypress.Commands.add('pageLogin', (username, password) => {
 	
 			cy.get('#username').type(username)
 			cy.get('#password').type(password)
+			cy.contains('Log In').should('be.visible').click()
+			cy.contains('Remind Me Later').should('be.visible').click()
 		})
 })
 Cypress.Commands.add('buttonLogin', () => {
