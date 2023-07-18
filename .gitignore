@@ -7,4 +7,4 @@ lib
 db.json
 package-lock.json
 package.json
-**/*salesforce.json
+/Cypress1/cypress/fixtures/salesforce.json
