@@ -38,7 +38,7 @@ declare namespace Cypress {
 		 */
 		visitHomepage(): Chainable<Element>
 		pageLogin(): Chainable<Element>
-		visitLiverpool(): Chainable<Element>
+		
 	}
 }
 
