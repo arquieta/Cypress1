@@ -10,7 +10,7 @@ describe('Validate operations in google calculator', () => {
 	
 	it('Validate sum in google', () => {
 		
-cy.get('.Uo8X3b.OhScic.zsYMMe').contains("Resultado de calculadora")	
+cy.get('.Uo8X3b.OhScic.zsYMe').contains("Resultado de calculadora")	
 	cy.get('.z7BZJb.XSNERd').type('5')
 	cy.contains('+')
 		.should('have.attr', 'aria-label', 'más')
