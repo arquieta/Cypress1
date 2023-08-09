@@ -43,6 +43,7 @@ declare namespace Cypress {
 		sendWhatsappCode(): Chainable<Element>
 		salesforceLogin(username, password): Chainable<Element>
 		zeroLogin(): Chainable<Element>
+		visitDemo(): Chainable<Element>
 	}
 }
 
@@ -58,6 +59,13 @@ Cypress.Commands.add('visitLiverpool', () => {
 				'user-agent': 'axios/0.27.2'
 			}
 })
+})
+Cypress.Commands.add('visitDemo', () => {
+	cy.viewport(1920, 1080)
+	cy.clearCookies()
+	cy.clearLocalStorage()
+		cy.visit('https://demoqa.com/', {
+			})
 })
 
 Cypress.Commands.add('pageLogin', (username, password) => {
