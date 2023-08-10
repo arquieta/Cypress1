@@ -14,7 +14,8 @@
     "cypress"
   ],
   "devDependencies": {
-    "cypress": "^12.13.0"
+    "cypress": "^12.13.0",
+    "cypress-mochawesome-reporter": "^3.5.1"
   },
   "dependencies": {
     "cypress-cucumber-preprocessor": "^4.3.1",
