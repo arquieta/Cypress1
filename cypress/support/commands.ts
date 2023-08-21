@@ -65,7 +65,9 @@ Cypress.Commands.add('visitDemo', () => {
 	cy.clearCookies()
 	cy.clearLocalStorage()
 		cy.visit('https://demoqa.com/', {
+			
 			})
+			cy.title().should('eq', 'DEMOQA')
 })
 
 Cypress.Commands.add('pageLogin', (username, password) => {

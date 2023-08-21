@@ -4,7 +4,11 @@
   "description": "Main folder for the course on cypress 12",
   "main": "index.js",
   "scripts": {
-    "runner": "cypress open"
+    "runner": "cypress open",
+    "report:merge": "mochawesome-merge cypress/reports/*.json > merged_report.txt > mochawesome-report.json",
+    "report:generate": "marge cypress/reports/html/mochawesome-report.json -f report --inline",
+    "cypress dash": "npx cypress run --record --key ac61e6dd-2bf2-4ba8-b9ac-37c0ffa5a304"
+
   },
   "author": "Diego Arquieta",
   "license": "ISC",

@@ -4,7 +4,7 @@ describe('Validate diferent methods to use lists', () => {
 	})
 	it('Use direct approach for the list', () => {
 		
-		cy.get('.category-cards .card-body').contains('Interactions').click()
+		cy.get('.category-cards .card-body').contains('Interactions').click() .should('have.text', 'interactions')
 
 		cy.get('.left-pannel .accordion .element-group .element-list.collapse.show .menu-list')
 			// .should('be.visible')

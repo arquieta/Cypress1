@@ -8,4 +8,7 @@ db.json
 package-lock.json
 package.json
 cypress/fixtures/salesforce.json
-
+/cypress/jsonlogs
+/cypress/reports
+/cypress/screenshots
+/cypress/videos
