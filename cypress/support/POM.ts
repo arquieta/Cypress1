@@ -1,9 +1,5 @@
 declare namespace Cypress {
 	interface Chainable {
-		/**
-		 * @param address1 - takes first address to use
-		 */
-		
 		goToIntegrations(): Chainable<Element>
 		validateMenu(): Chainable<Element>
 	}

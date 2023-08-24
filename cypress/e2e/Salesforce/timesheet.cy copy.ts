@@ -1,13 +1,13 @@
 describe('Meter Timesheet', () => {
 	it('Crear y mandar timesheet', () => {
-		cy.origin('https://umbrage.lightning.force.com/lightning/page/home',() => {
+		cy.origin('/',() => {
   
 })
-cy.visit('https://umbrage.my.salesforce.com/')
+cy.visit('/')
 
 cy.salesforceLogin('username', 'password')
 		
-		cy.url().should('include', 'https://umbrage.lightning.force.com/lightning/page/home')
+		cy.url().should('include', '/home')
 		cy.contains('Time Entry').should('be.visible').click()
 		cy.get('#button-1144-btnInnerEl').should('be.visible').click()
 		cy.get('#combo-1148-inputEl').type('Unassigned Time - Mexico')
