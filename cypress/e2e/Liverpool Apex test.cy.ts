@@ -1,5 +1,9 @@
-describe('Validar operaciones  en la calculadora de google', () => {
+describe('Apex Liverpool', () => {
+
 	it.only('Buscar Ps5 en Liverpool', () => {
+		cy.fixture('productos.json').then((data) => {
+			const producto = data.productos[0]; // Accede al segundo producto (índice 1)
+		});
 		//cy.visitLiverpool()
 		cy.visit('https://www.liverpool.com.mx/tienda/home', {
 			failOnStatusCode: false,
@@ -24,7 +28,42 @@ describe('Validar operaciones  en la calculadora de google', () => {
       // Valida que hay al menos un elemento con "Para PS5"
       const hasParaPS5 = $ul.find('li:contains("para PS5")').length > 0;
       expect(hasParaPS5).to.be.true;
+
+	  cy.fixture('productos.json').then((data) => {
+		const producto = data.productos[0]; // Accede al segundo producto (índice 1)
+	
+	  cy.get(`ul.m-product__listingPlp li[data-prodid="${producto['ID del producto']}"]`)
+      .within(() => {
+        // Validar nombre del producto
+        cy.get('h3').should('contain.text', producto['Nombre del producto']);
+
+        // Validar precio original
+        cy.get('.a-card-price').should('contain.text', producto['Precio original']);
+
+        // Validar precio con descuento
+        cy.get('.a-card-discount').should('contain.text', producto['Precio con descuento']);
+
+        // Validar URL de la imagen
+        cy.get('img').should('have.attr', 'src', producto['URL de la imagen']);
+
+        // Validar URL del producto
+        cy.get('a').should('have.attr', 'href', producto['URL del producto']);
+      });
+	});
+
+
+
+
+	  // Encuentra el elemento específico y realiza la acción
+  cy.wrap($ul)
+  .contains('Consola PS5 Slim de 1 TB edición estándar') // Encuentra el elemento específico
+  .should('be.visible') // Valida que está visible
+  .click(); // Hace clic en el elemento
     });
+
+
+	
+	cy.wait(5000)
 	
 	cy.get('#opc_pdp_buyNowButton').click({force: true})
 		cy.wait(10000)
