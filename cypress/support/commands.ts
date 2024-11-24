@@ -41,6 +41,7 @@ declare namespace Cypress {
 		visitLiverpool(): Chainable<Element>
 		buttonLogin(): Chainable<Element>
 		sendWhatsappCode(): Chainable<Element>
+		salesforceLogin(username, password): Chainable<Element>
 	}
 }
 
@@ -66,7 +67,15 @@ Cypress.Commands.add('pageLogin', (username, password) => {
 		cy.get('#username').type(username)
 		cy.get('#password').type(password)
 	})
+})
+	Cypress.Commands.add('salesforceLogin', (username, password) => {
+		cy.fixture('salesforce').then(salesforce => {
+			const username = salesforce.username
+			const password = salesforce.password
 	
+			cy.get('#username').type(username)
+			cy.get('#password').type(password)
+		})
 })
 Cypress.Commands.add('buttonLogin', () => {
 	cy.get('.ce1523b8d.c85726882.c567db5a5.cb74e5196.cdff2c08e')

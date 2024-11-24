@@ -1,12 +1,11 @@
 describe('Validar operaciones  en la calculadora de google', () => {
-	it('Buscar Ps5 en Liverpool', () => {
+	it('Validar suma en google', () => {
 		cy.visitLiverpool()
 
 
 		cy.get('#mainSearchbar').should('be.visible').type(
-			'playstation{enter}'
+			'Pantalla LG OLED Smart TV de 55 pulgadas 4K{enter}'
 		)
-		cy.wait(5000)
 		cy.contains('Pantalla LG OLED SMART TV de 55 pulgadas 4k/Dolby Atmos OLED55C2PSA con WebOS').should('be.visible').click()
 		cy.get('#opc_pdp_buyNowButton').click({force: true})
 		cy.wait(10000)
@@ -20,8 +19,9 @@ describe('Validar operaciones  en la calculadora de google', () => {
 	})
 })
 
-it('Validar Escenarios de Liverpool', () => {
-	cy.visitLiverpool()
+it('Validar resta en google', () => {
+	cy.baseURL()
+
 
 	cy.get('#mainSearchbar').should('be.visible').type(
 		'Pantalla LG OLED Smart TV de 55 pulgadas 4K{enter}'
