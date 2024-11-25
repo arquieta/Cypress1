@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "http://www.liverpool.com.mx",
+    baseUrl: "https://www.liverpool.com.mx/tienda/home",
     "chromeWebSecurity": false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
