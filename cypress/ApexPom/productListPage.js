@@ -33,14 +33,65 @@ class ProductListPage {
         //ver todas las opciones
         cy.get('#Tamao').click()
         cy.wait(5000)
+        cy.contains('label', tamaño)
+            .should('be.visible')
         // Validar y hacer clic en la opción de tamaño "55 pulgadas"
         cy.get('#variants\\.normalizedSize-55\\ pulgadas')
-          //.should('be.visible') // Verifica que el elemento está visible
           .should('have.attr', 'id', 'variants.normalizedSize-55 pulgadas') // Verifica el ID del elemento
-          .click()
+          .click({ force: true });
+
     })
 
   }
+
+  validateAndClickBrand(marca) {
+    // Verificar que el elemento contenedor del filtro existe y está visible
+    cy.get('.o-aside > :nth-child(20)').within(() => {
+      //ver todas las opciones
+      cy.get('#Marcas').scrollIntoView().click()
+      
+      cy.wait(5000)
+      cy.contains('label', marca).scrollIntoView()
+        .should('be.visible')
+    })
+    cy.get(`#brand-${marca}`)
+  .scrollIntoView()
+  .click({ force: true });
+}
+
+validateAndClickPrice(precio) {
+  // Verificar que el elemento contenedor del filtro existe y está visible
+  cy.get('.o-aside > :nth-child(23)').within(() => {
+    //ver todas las opciones
+    
+    cy.wait(5000)
+    cy.contains('label', precio).scrollIntoView()
+      .should('be.visible')
+  })
+  cy.get('#variants\\.prices\\.sortPrice-5000-10000')
+.scrollIntoView()
+.click({ force: true });
+}
+
+validateFiltersApplied(filter1, filter2, filter3) { 
+
+  cy.get('.plp-filters-container .mdc-chip__text')
+  .should(($texts) => {
+    const sizeText = $texts.text();
+    // Validar que contiene '55 pulgadas' y '10000'
+    expect(sizeText).to.include(filter1);
+    expect(sizeText).to.include(filter2);
+    expect(sizeText).to.include(filter3);
+  })
+  .should('be.visible');
+}
+validateAmountOfResults() {
+
+  cy.get('.a-plp-results-title')
+  .should('have.text', '2 Productos')
+  .and('be.visible')
+}
+
 }
   
 

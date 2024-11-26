@@ -50,6 +50,8 @@ describe('Apex Liverpool', () => {
 	it.only('Buscar smart tv en Liverpool y validar filtros de Tamaño y precio al menos', () => {
 		const producto = productos.productos[0];
 		let tvSize = '55 pulgadas';
+		let precio = '10000'
+		let marca = 'TCL'
 	
 		// Visitar la página principal
 		homePage.visit();
@@ -63,9 +65,13 @@ describe('Apex Liverpool', () => {
 		productListPage.validateFilterPrice();
 
 		// Validar y hacer clic en la opción de tamaño "55 pulgadas"
-		productListPage.validateAndClickSize(tvSize);
+		productListPage.validateAndClickSize(tvSize)
+		productListPage.validateAndClickPrice(precio)
+		productListPage.validateAndClickBrand(marca)
+
+		productListPage.validateFiltersApplied(tvSize, precio, marca)
 	
-		
+		productListPage.validateAmountOfResults()
 	
 		
 	  });
