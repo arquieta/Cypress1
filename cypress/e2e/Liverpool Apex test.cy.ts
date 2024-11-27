@@ -47,7 +47,7 @@ describe('Apex Liverpool', () => {
 	});
 
 
-	it.only('Buscar smart tv en Liverpool y validar filtros de Tamaño y precio al menos', () => {
+	it('Buscar smart tv en Liverpool y validar filtros de Tamaño y precio al menos', () => {
 		const producto = productos.productos[0];
 		let tvSize = '55 pulgadas';
 		let precio = '10000'
@@ -72,6 +72,23 @@ describe('Apex Liverpool', () => {
 		productListPage.validateFiltersApplied(tvSize, precio, marca)
 	
 		productListPage.validateAmountOfResults()
+	
+		
+	  });
+
+	
+	  it.only('Filtra perfumes de hombre por marca Dior', () => {
+		const producto = productos.productos[0];
+	
+		// Visitar la página principal
+		homePage.visit();
+    	homePage.validateAndClickCategorias() 
+		homePage.displayCategory('CAT5020010');
+		homePage.clickSubmenuOption('Perfumes Hombre')
+		
+		cy.wait(15000);
+	
+		
 	
 		
 	  });

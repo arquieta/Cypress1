@@ -9,6 +9,27 @@ class HomePage {
         },
       });
     }
+
+    validateAndClickCategorias() {
+      // Localizar el elemento "Categorías"
+      cy.get('span.a-header__strongLink.nav-desktop-menu-action')
+          .contains('Categorías') // Validar que el texto contiene "Categorías"
+          .should('be.visible') // Validar que está visible
+          .click(); // Hacer clic en el elemento
+  }
+
+  displayCategory(category) {
+    cy.get(`li[data-submenu-id]`).contains(category).trigger('mouseover', { force: true })
+    cy.wait(10000)
+      
+  }
+  clickSubmenuOption(menuOption) {
+      // Hacer clic en la opción del submenú dinámica
+      cy.contains('.nmm-content a', menuOption)
+      .click();
+  }
+  
+
   
     searchProduct(productName) {
       cy.get('#mainSearchbar').should('be.visible').type(`${productName}{enter}`);
