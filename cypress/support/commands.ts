@@ -33,33 +33,14 @@
 //}
 declare namespace Cypress {
 	interface Chainable {
-		/**
-		 * @param address1 - takes first address to use
-		 */
-		visitHomepage(): Chainable<Element>
 		pageLogin(username, password): Chainable<Element>
-		visitLiverpool(): Chainable<Element>
-		buttonLogin(): Chainable<Element>
-		sendWhatsappCode(): Chainable<Element>
-		salesforceLogin(username, password): Chainable<Element>
+		
 	}
 }
 
 
 
-Cypress.Commands.add('visitLiverpool', () => {
-	cy.viewport(1920, 1080)
-	cy.clearCookies()
-	cy.clearLocalStorage()
-		cy.visit('/', {
-			failOnStatusCode: false,
-			headers: {
-			  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
-			  'Referer': 'https://www.google.com/',
-			  'Accept-Language': 'es-MX,es;q=0.9,en;q=0.8',
-			},
-})
-})
+
 
 Cypress.Commands.add('pageLogin', (username, password) => {
 	cy.fixture('example').then(example => {
@@ -69,22 +50,4 @@ Cypress.Commands.add('pageLogin', (username, password) => {
 		cy.get('#username').type(username)
 		cy.get('#password').type(password)
 	})
-})
-	Cypress.Commands.add('salesforceLogin', (username, password) => {
-		cy.fixture('salesforce').then(salesforce => {
-			const username = salesforce.username
-			const password = salesforce.password
-	
-			cy.get('#username').type(username)
-			cy.get('#password').type(password)
-		})
-})
-Cypress.Commands.add('buttonLogin', () => {
-	cy.get('.ce1523b8d.c85726882.c567db5a5.cb74e5196.cdff2c08e')
-	
-	//.c994ae14c.c2fd8f218.ca2dc35c7.c0c7f649b.cfbf81233
-})
-Cypress.Commands.add('sendWhatsappCode', () => {
-	cy.get('.cfe4535fe._link-resend-code.c2dd6083e').should('be.visible').click()
-	cy.wait(10000)
 })

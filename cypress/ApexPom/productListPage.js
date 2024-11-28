@@ -46,7 +46,7 @@ class ProductListPage {
 
   validateAndClickBrand(marca) {
     // Verificar que el elemento contenedor del filtro existe y está visible
-    cy.get('.o-aside > :nth-child(20)').within(() => {
+    cy.get('.o-aside').within(() => {
       //ver todas las opciones
       cy.get('#Marcas').scrollIntoView().click()
       
@@ -85,10 +85,10 @@ validateFiltersApplied(filter1, filter2, filter3) {
   })
   .should('be.visible');
 }
-validateAmountOfResults() {
+validateAmountOfResults(cantidadDeProductos) {
 
   cy.get('.a-plp-results-title')
-  .should('have.text', '2 Productos')
+  .should('have.text', cantidadDeProductos)
   .and('be.visible')
 }
 

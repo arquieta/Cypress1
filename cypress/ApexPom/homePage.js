@@ -19,9 +19,9 @@ class HomePage {
   }
 
   displayCategory(category) {
-    cy.get(`li[data-submenu-id]`).contains(category).trigger('mouseover', { force: true })
-    cy.wait(10000)
-      
+    cy.get('div#categories-sidebarMenu') // Encuentra el contenedor principal
+    .find('li[data-submenu-id="CAT5020010"]')   // Filtra los elementos <li> con la clase específica
+  .contains('a', category).trigger('mouseover', { force: true })         
   }
   clickSubmenuOption(menuOption) {
       // Hacer clic en la opción del submenú dinámica

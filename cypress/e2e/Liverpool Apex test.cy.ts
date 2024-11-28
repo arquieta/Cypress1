@@ -8,15 +8,15 @@ const productListPage = new ProductListPage();
 const productDetails = new ProductDetails();
 
 describe('Apex Liverpool', () => {
+	beforeEach(() => {
+		// Visitar la página principal
+		homePage.visit();
+});
 	it('Buscar Ps5 en Liverpool y validar titulo y precio al menos', () => {
 	  const producto = productos.productos[0];
-  
-	  // Visitar la página principal
-	  homePage.visit();
-  
+
 	  // Buscar producto
 	  homePage.searchProduct('playstation');
-	  cy.wait(5000);
   
 	  // Validar lista de productos
 	  productListPage.validateProductListContains('Consola PS5');
@@ -40,10 +40,6 @@ describe('Apex Liverpool', () => {
 	  
 		  // Mostrar la información de validación en consola
 		  cy.log('Validando producto con los siguientes datos:', validationData);
-  
-	  cy.wait(5000);
-  
-	  
 	});
 
 
@@ -52,13 +48,9 @@ describe('Apex Liverpool', () => {
 		let tvSize = '55 pulgadas';
 		let precio = '10000'
 		let marca = 'TCL'
-	
-		// Visitar la página principal
-		homePage.visit();
-	
+		let cantidadProductos = "2 Productos"
 		// Buscar producto
 		homePage.searchProduct('smart tv');
-		cy.wait(10000);
 		// Validar fltro de Tamaño
 		productListPage.validateFilterSize();
 		// Validar fltro de Precio
@@ -71,25 +63,19 @@ describe('Apex Liverpool', () => {
 
 		productListPage.validateFiltersApplied(tvSize, precio, marca)
 	
-		productListPage.validateAmountOfResults()
-	
-		
+		productListPage.validateAmountOfResults(cantidadProductos)
 	  });
 
-	
-	  it.only('Filtra perfumes de hombre por marca Dior', () => {
+	  it('Filtra perfumes de hombre por marca Dior', () => {
 		const producto = productos.productos[0];
+		let marca = "DIOR"
+		let cantidadProductos = "15 Productos"
 	
-		// Visitar la página principal
-		homePage.visit();
     	homePage.validateAndClickCategorias() 
-		homePage.displayCategory('CAT5020010');
+		homePage.displayCategory('Belleza');
 		homePage.clickSubmenuOption('Perfumes Hombre')
-		
-		cy.wait(15000);
-	
-		
-	
+		productListPage.validateAndClickBrand(marca)
+		productListPage.validateAmountOfResults(cantidadProductos)
 		
 	  });
   });

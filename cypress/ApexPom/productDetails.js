@@ -8,9 +8,6 @@ class ProductDetails {
 
       
     }
-
-    
-  
     clickBuyNow() {
       cy.get('#opc_pdp_buyNowButton').click({ force: true });
     }
